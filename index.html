@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="de" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#121210">
+  <title>Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">●</div>
+      <div class="topbar-actions">
+        <button id="shareBtn" class="button button-dark">Link</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">AKTUELL</p>
+        <h1 id="currentDate">—</h1>
+        <p id="statusText" class="muted">Noch keine Daten</p>
+      </div>
+      <div class="hero-number">
+        <span id="dayNumber">—</span>
+        <small>Tage</small>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <h2>Verlauf</h2>
+        <button id="addBtn" class="button button-light">+</button>
+      </div>
+      <div id="timeline" class="timeline empty">
+        <p class="muted">Füge deinen ersten Eintrag hinzu.</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="stat">
+        <span class="label">Durchschnitt</span>
+        <strong id="avg">—</strong>
+        <span class="unit">Tage</span>
+      </div>
+      <div class="stat">
+        <span class="label">Spanne</span>
+        <strong id="range">—</strong>
+        <span class="unit">Tage</span>
+      </div>
+      <div class="stat">
+        <span class="label">Nächster Zeitraum</span>
+        <strong id="forecast">—</strong>
+        <span class="unit">ca.</span>
+      </div>
+    </section>
+
+    <section class="calendar-card">
+      <div class="section-head">
+        <button id="prevMonth" class="icon-button" aria-label="Vorheriger Monat">←</button>
+        <h2 id="monthTitle">—</h2>
+        <button id="nextMonth" class="icon-button" aria-label="Nächster Monat">→</button>
+      </div>
+      <div class="weekdays">
+        <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+      </div>
+      <div id="calendar" class="calendar"></div>
+      <div class="legend">
+        <span><i class="dot actual"></i>Eintrag</span>
+        <span><i class="dot forecast-dot"></i>Schätzung</span>
+      </div>
+    </section>
+
+    <footer>
+      <span>Die Daten bleiben auf diesem Gerät.</span>
+      <button id="clearBtn" class="text-button">Alles löschen</button>
+    </footer>
+  </main>
+
+  <dialog id="entryDialog">
+    <form method="dialog" id="entryForm" class="dialog">
+      <div class="section-head">
+        <h2>Eintrag</h2>
+        <button value="cancel" class="icon-button">×</button>
+      </div>
+      <label>
+        Datum
+        <input id="entryDate" type="date" required>
+      </label>
+      <label>
+        Dauer <span class="optional">optional</span>
+        <input id="entryLength" type="number" min="1" max="14" placeholder="z. B. 5">
+      </label>
+      <div class="dialog-actions">
+        <button value="cancel" class="button button-light">Abbrechen</button>
+        <button id="saveEntry" value="default" class="button button-dark">Speichern</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="shareDialog">
+    <div class="dialog">
+      <div class="section-head">
+        <h2>Link</h2>
+        <button id="closeShare" class="icon-button">×</button>
+      </div>
+      <p class="muted">Der Link enthält die gespeicherten Daten. Teile ihn nur mit Personen, denen du sie zeigen möchtest.</p>
+      <input id="shareUrl" class="share-input" readonly>
+      <button id="copyBtn" class="button button-dark full">Link kopieren</button>
+    </div>
+  </dialog>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
